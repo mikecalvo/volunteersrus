@@ -102,6 +102,7 @@
     YAHOO.util.Event.onDOMReady(init);
 
 </script>
+
 <div id="newDialog">
     <div class="hd">Add Item </div>
     <div class="bd">

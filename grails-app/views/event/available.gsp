@@ -4,7 +4,7 @@
     <meta name="layout" content="main" />
 </head>
 <body>
-<table style="width: 900px; border: 1px solid black" cellpadding="10" cellspacing="0">
+<table class="pageDetails" cellpadding="10" cellspacing="0">
     <tr><td class="tableheading">Welcome</td></tr>
     <tr>
         <td >
@@ -26,6 +26,7 @@
         </tr>
         <tr><td style="text-align: center; padding-top: 0px">${e.description}</td></tr>
     </g:each>
+  
     <s:isLoggedIn>
         <tr><td style="text-align: right"><g:link controller="event" action="create">Add A New Event</g:link></td></tr>
     </s:isLoggedIn>
