@@ -47,7 +47,7 @@
     <div style="width:900px">
         <p style="color: red; font-weight: bold">We appologize, but an unexpcted error has occurred.</p>
         <p style="text-align: left">If you have time, please send an email to
-            <a href="mailto:mike@citronellasoftware.com?subject=Highlands Volunteer Site Error">Mike</a> and please provide any detailed information that you
+            <a href="mailto:edinahighlandsvolunteers@gmail.com?subject=attn Site Manager: Highlands Volunteer Site Error">Website Manager</a> and please provide any detailed information that you
         can about how you received this error.  It will help us prevent it in the future.</p>
         <p style="text-align: left">Please copy the the information below into the body of your email.</p>
         <p>Thank you.</p>
