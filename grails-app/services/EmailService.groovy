@@ -4,31 +4,17 @@ import org.apache.commons.mail.SimpleEmail
 class EmailService {
 
     def personService
-    java.util.Random random = java.util.Random.newInstance()
 
     boolean transactional = false
+    private static MAIL_SERVER = "smtp.gmail.com";
+    private static MAIL_SERVER_PORT = 587;
 
     def sendEmailWithParticipation(Collection recipients, Event event, String fromEmail, String fromName, String subject, String body, String baseAppUrl) {
 
         Thread t = new Thread( {
-            recipients.each { person ->
-                if (person && person.email && person.email.indexOf('@') > -1) {
-                    def sent = false;
-                    def tries = 0;
-                    while (!sent && tries++ < 10) {
-                        try {
-                            sendAppendedMessage event, fromEmail, fromName, person, subject, body, baseAppUrl
-                            sent = true;
-                        } catch (Exception x) {
-                            int seconds = random.nextInt(60);
-                            log.error "Error sending participation email to ${person.email}: ${x.message}.  Waiting ${seconds} seconds to retry"
-                            Thread.sleep(1000*seconds);
-                        }
-                    }
-
-                    if (!sent)
-                        log.error("Unable to send participation email to ${person.email} after 10 tries.")
-                }
+            recipients.each { person->
+                if (person && person.email && person.email.indexOf('@') > -1)
+                    sendAppendedMessage event, fromEmail, fromName, person, subject, body, baseAppUrl
                 else if (log)
                     log.info("Could not send email to ${person}")
             }
@@ -38,7 +24,7 @@ class EmailService {
     }
 
     def sendVolunteerConfirmation(Position p, String baseAppUrl) {
-        SimpleEmail email = createEmail("do-not-reply@highlandsvolunteers.org", "Highlands Volunteer Administrator")
+        SimpleEmail email = createEmail(p.event.administrator.email, p.event.administrator.name)
         email.addTo p.volunteer.email, p.volunteer.name
         email.addCc p.event.administrator.email, p.event.administrator.name
         email.setSubject "Edina Highlands Elementary Volunteer Signup Confirmation"
@@ -73,15 +59,9 @@ The Highlands Volunteer Committee
     }
 
     private SimpleEmail createEmail(String fromAddress, String fromName) {
-        // gmail VERSION
-        SimpleEmail email = new SimpleEmail(hostName: "smtp.gmail.com", smtpPort: 587,
+        SimpleEmail email = new SimpleEmail(hostName: MAIL_SERVER, smtpPort: MAIL_SERVER_PORT,
                 TLS: true, authenticator: new DefaultAuthenticator("edinahighlandsvolunteers", "mrhodney"))
-
-        // James/Sendmail VERSION
-        //SimpleEmail email = new SimpleEmail(hostName: "localhost", smtpPort: 25)
-        
         email.setFrom fromAddress, fromName
-
         return email
     }
 

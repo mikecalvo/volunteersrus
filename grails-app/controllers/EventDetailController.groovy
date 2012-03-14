@@ -34,14 +34,14 @@ class EventDetailController {
         EventDetail d = EventDetail.get(params.id)
         if (d) {
             render(builder:'json') {
-                id = d.id
-                name = d.name
-                instructions = d.instructions
-                showFirstName = d.showFirstName
-                showLastName = d.showLastName
-                showQuantity = d.showQuantity
-                showRoomNumber = d.showRoomNumber
-                showTeacher = d.showTeacher
+                id(d.id)
+                name(d.name)
+                instructions(d.instructions)
+                showFirstName(d.showFirstName)
+                showLastName(d.showLastName)
+                showQuantity(d.showQuantity)
+                showRoomNumber(d.showRoomNumber)
+                showTeacher(d.showTeacher)
             }
         }
     }

@@ -143,11 +143,11 @@ class PositionController {
         Position p = Position.get(params.id)
         if (p && p.isFilled()) {
             render(builder:'json') {
-                firstName = p.volunteer.firstName
-                lastName = p.volunteer.lastName
-                email = p.volunteer.email
-                phone = p.volunteer.phone
-                positionId = p.id
+                firstName(p.volunteer.firstName)
+                lastName(p.volunteer.lastName)
+                email(p.volunteer.email)
+                phone(p.volunteer.phone)
+                positionId(p.id)
             }
         }
     }
@@ -176,16 +176,15 @@ class PositionController {
         Position p = Position.get(params.id)
         if (p) {
             render(builder:'json') {
-                id = p.id
-                title = p.title
-                description = p.description
-                positionId = p.manager?.id
-                location = p.location
-                formattedDate = p.formattedDate
-                startTime = p.startTime
-                endTime = p.endTime
+                id(p.id)
+                title(p.title)
+                description(p.description)
+                positionId(p.manager?.id)
+                location(p.location)
+                formattedDate(p.formattedDate)
+                startTime(p.startTime)
+                endTime(p.endTime)
             }
         }
     }
-
 }

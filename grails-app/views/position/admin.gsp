@@ -15,7 +15,6 @@
             sels[i].checked = master.checked;
         }
     </script>
-
     <style type="text/css">
     .yui-panel-container select {
         _visibility: inherit;

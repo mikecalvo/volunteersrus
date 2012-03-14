@@ -80,10 +80,10 @@ class ItemController {
         EventItem i = EventItem.get(params.id)
         if (i) {
             render(builder:'json') {
-                id = i.id
-                name = i.item.name
-                description = i.item.description
-                numberNeeded = i.numberNeeded
+                id(i.id)
+                name(i.item.name)
+                description(i.item.description)
+                numberNeeded(i.numberNeeded)
             }
         }
     }

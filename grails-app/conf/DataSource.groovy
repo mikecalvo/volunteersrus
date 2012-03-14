@@ -1,6 +1,6 @@
 dataSource {
-	pooled = true
-    driverClassName = "org.h2.Driver"
+	pooled = false
+	driverClassName = "org.hsqldb.jdbcDriver"
 	username = "sa"
 	password = ""
 }
@@ -14,9 +14,8 @@ environments {
             //password = "sql"
             //driverClassName = "com.mysql.jdbc.Driver"
 			dbCreate = "update"
-            url = "jdbc:h2:mem:devDb;MVCC=TRUE"
 			//dbCreate = "create-drop" // one of 'create', 'create-drop','update'
-			//url = "jdbc:hsqldb:file:devDB"
+			url = "jdbc:hsqldb:file:devDB"
             //url= "jdbc:mysql://localhost:3306/signmeup"
             //username = "signmeup_app"
             //password = "sql"
